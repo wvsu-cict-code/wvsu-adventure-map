@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Sound/click5.tres" type="AudioStream" id=1]
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Area2D
+export(String) var title = \"\"
+export(String) var description = \"\"
+onready var root = get_parent()
+
+func _ready():
+	root.get_parent().get_node(\"UI/Popup/ScrollContainer/Description\").text = description
+	root.get_parent().get_node(\"UI/Popup/Title\").text = title
+
+func _on_Area2D_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			$Click.play()
+			root.get_parent().get_node(\"UI/Popup\").visible = true
+"
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 69.029
+
+[node name="AreaTrigger" type="Area2D"]
+script = SubResource( 7 )
+title = "Title Here"
+description = "Description"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -851, 783 )
+shape = SubResource( 4 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[connection signal="input_event" from="." to="." method="_on_Area2D_input_event"]

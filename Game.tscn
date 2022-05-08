@@ -1,0 +1,315 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://MapCamera.gd" type="Script" id=1]
+[ext_resource path="res://assets/Map/_1_water.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Clouds.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/GUI/Frame/Frame_TabMenuFrame_s.png" type="Texture" id=4]
+[ext_resource path="res://assets/Fonts/Lora-Medium.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/Popup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/GUI/Button/Btn_Circle02.png" type="Texture" id=7]
+[ext_resource path="res://scenes/AreaTrigger.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Map/_4_symbols.png" type="Texture" id=9]
+[ext_resource path="res://assets/Map/water_with_shadow.shader" type="Shader" id=10]
+[ext_resource path="res://assets/Textures/water_uv_offset.png" type="Texture" id=11]
+[ext_resource path="res://assets/Textures/water_normal.png" type="Texture" id=12]
+[ext_resource path="res://assets/Map/_2_landmass.png" type="Texture" id=13]
+[ext_resource path="res://assets/Fonts/Lora-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/Map/compas.png" type="Texture" id=15]
+[ext_resource path="res://assets/Sound/alexander-nakarada-adventure.tres" type="AudioStream" id=16]
+[ext_resource path="res://assets/GUI/PictoIcon/Icon_PictoIcon_Compass.png" type="Texture" id=17]
+[ext_resource path="res://assets/GUI/Button/Btn_Circle02_Pressed.png" type="Texture" id=18]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 10 )
+shader_param/shadow_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
+shader_param/tile_factor = 116.0
+shader_param/aspect_ratio = 0.628
+shader_param/texture_offset_scale = Vector2( 0.5, 0.5 )
+shader_param/texture_offset_height = 0.5
+shader_param/texture_offset_time_scale = 0.01
+shader_param/sine_time_scale = 0.05
+shader_param/sine_offset_scale = Vector2( 0.4, 20 )
+shader_param/sine_wave_size = 0.01
+shader_param/texture_offset_uv = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 44
+font_data = ExtResource( 5 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Map" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 8168, 0 )
+
+[node name="Map-practice" type="Sprite" parent="ParallaxBackground/Map"]
+position = Vector2( 66, -130 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 12 )
+
+[node name="WaterFX" type="Sprite" parent="ParallaxBackground/Map"]
+self_modulate = Color( 1, 1, 1, 0.364706 )
+material = SubResource( 3 )
+position = Vector2( 66, -130 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 12 )
+
+[node name="Landmass" type="Sprite" parent="ParallaxBackground/Map"]
+position = Vector2( 66, -130 )
+texture = ExtResource( 13 )
+normal_map = ExtResource( 12 )
+
+[node name="Props" type="Sprite" parent="ParallaxBackground/Map"]
+position = Vector2( 66, -130 )
+texture = ExtResource( 9 )
+normal_map = ExtResource( 12 )
+
+[node name="Clouds1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1.1, 1.1 )
+
+[node name="Clouds" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+
+[node name="Clouds2" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 37, 626 )
+
+[node name="Clouds3" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -1053, 209 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds4" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -1531, 828 )
+
+[node name="Clouds5" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -421, 1040 )
+
+[node name="Clouds6" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 585, 774 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds7" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 410, 1511 )
+
+[node name="Clouds8" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1459, 1323 )
+
+[node name="Clouds9" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1789, 792 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds10" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 2142, 1377 )
+
+[node name="Clouds11" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1940, 1895 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds12" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 2852, 2016 )
+
+[node name="Clouds13" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 3447, 1414 )
+
+[node name="Clouds14" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 2922, 536 )
+
+[node name="Clouds15" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 3628, 159 )
+
+[node name="Clouds16" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 2575, -487 )
+
+[node name="Clouds17" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1408, -820 )
+
+[node name="Clouds18" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 56, -827 )
+
+[node name="Clouds19" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -529, 336 )
+
+[node name="Clouds20" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -959, -914 )
+
+[node name="Clouds21" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -1880, -1001 )
+
+[node name="Clouds22" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -2326, -1439 )
+
+[node name="Clouds37" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -453, -630 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds38" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -474, -155 )
+
+[node name="Clouds39" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 246, -532 )
+
+[node name="Clouds40" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 445, -1439 )
+
+[node name="Clouds41" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 805, -303 )
+scale = Vector2( 3, 3 )
+
+[node name="Clouds42" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1894, -163 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds43" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -1585, -91 )
+
+[node name="Clouds44" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -2361, 596 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds45" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1296, 660 )
+
+[node name="Clouds46" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -1887, 1279 )
+
+[node name="Clouds47" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -703, 1664 )
+
+[node name="Clouds23" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -2772, -340 )
+
+[node name="Clouds24" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -2530, -1182 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds25" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -718, -1858 )
+
+[node name="Clouds26" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -680, -1488 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds27" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -2164, -1986 )
+
+[node name="Clouds28" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( -325, -2288 )
+
+[node name="Clouds29" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1049, -2314 )
+
+[node name="Clouds30" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 622, -1797 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds31" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1490, -2050 )
+
+[node name="Clouds32" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 1751, -1419 )
+
+[node name="Clouds33" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 2442, -966 )
+scale = Vector2( 2, 2 )
+
+[node name="Clouds34" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 2944, -1559 )
+
+[node name="Clouds35" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 2465, -2197 )
+
+[node name="Clouds36" parent="ParallaxBackground/Clouds1" instance=ExtResource( 3 )]
+position = Vector2( 3790, -1423 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Label2" type="Label" parent="UI"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -52.0
+margin_right = 171.0
+custom_fonts/font = SubResource( 1 )
+text = "BSEMC 1A"
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 7
+
+[node name="Popup" parent="UI" instance=ExtResource( 6 )]
+visible = false
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI"]
+margin_top = 20.0
+margin_right = 531.0
+margin_bottom = 111.0
+rect_scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 4 )
+patch_margin_left = 90
+patch_margin_top = 16
+patch_margin_right = 92
+patch_margin_bottom = 15
+
+[node name="Label2" type="Label" parent="UI/NinePatchRect"]
+margin_left = 54.0
+margin_top = 15.0
+margin_right = 473.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 2 )
+text = "Lagulad Taga-West"
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 7
+
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = -190.0
+margin_right = 380.0
+margin_bottom = 164.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 2
+texture = ExtResource( 15 )
+
+[node name="ExploreButton" type="TextureButton" parent="UI"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -242.0
+margin_top = -208.0
+margin_right = -115.0
+margin_bottom = -104.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 18 )
+expand = true
+stretch_mode = 3
+
+[node name="IconPictoIconCompass" type="Sprite" parent="UI/ExploreButton"]
+modulate = Color( 0.254902, 0.2, 0.2, 1 )
+position = Vector2( 63, 49 )
+scale = Vector2( 0.916667, 0.916667 )
+texture = ExtResource( 17 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+autoplay = true
+
+[node name="Places" type="Node2D" parent="."]
+
+[node name="AreaTrigger" parent="Places" instance=ExtResource( 8 )]
+
+[editable path="UI/Popup"]
