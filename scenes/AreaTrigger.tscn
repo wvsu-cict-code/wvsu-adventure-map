@@ -8,13 +8,22 @@ export(String) var title = \"\"
 export(String) var description = \"\"
 onready var root = get_parent()
 
+
+const COMBO_TIMEOUT = 0.3 # Timeout between key presses
+const MAX_COMBO_CHAIN = 2 # Maximum key presses in a combo
+
+
+var last_key_delta = 0    # Time since last keypress
+var key_combo = []        # Current combo
+
+
 func _ready():
 	root.get_parent().get_node(\"UI/Popup/ScrollContainer/Description\").text = description
 	root.get_parent().get_node(\"UI/Popup/Title\").text = title
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
+		if event.is_action_pressed(\"mouse_clicked\") and event.pressed:
 			$Click.play()
 			root.get_parent().get_node(\"UI/Popup\").visible = true
 "
@@ -28,7 +37,6 @@ title = "Title Here"
 description = "Description"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -851, 783 )
 shape = SubResource( 4 )
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
